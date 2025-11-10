@@ -6480,6 +6480,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 709608682755385880, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2228285816606404356, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
       propertyPath: onLoggedIn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -6528,11 +6532,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8062638990537812080, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8871743118337915364, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
       propertyPath: m_Name
       value: PlayFabSystem
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2228285816606404356, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+    - {fileID: 5968980631623010772, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
