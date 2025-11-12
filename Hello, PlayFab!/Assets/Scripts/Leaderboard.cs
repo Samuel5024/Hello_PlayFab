@@ -9,6 +9,11 @@ public class Leaderboard : MonoBehaviour
     public GameObject leaderboardCanvas;
     public GameObject[] leaderboardEntries;
 
+    private void Start()
+    {
+        DisplayLeaderboard();
+    }
+
     //create an instance of the script
     public static Leaderboard instance;
     private void Awake()
@@ -20,13 +25,14 @@ public class Leaderboard : MonoBehaviour
     }
 
     // OnLoggedIn gets caled when we log into our PlayFab account
-    public void OnLoggedIn ()
+    public void OnLoggedIn()
     {
+        Debug.Log("OnLoggedIn() called!");
         leaderboardCanvas.SetActive(true);
         DisplayLeaderboard();
     }
 
-    public void DisplayLeaderboard ()
+    public void DisplayLeaderboard()
     {
         GetLeaderboardRequest getLeaderboardRequest = new GetLeaderboardRequest
         {
@@ -42,12 +48,12 @@ public class Leaderboard : MonoBehaviour
 
     // UpdateLeaderboardUI gets called when we get the API request back with a list of players in the leaderboard
     // This function will display the leaderboard on-screen
-    void UpdateLeaderboardUI (List<PlayerLeaderboardEntry> leaderboard)
+    void UpdateLeaderboardUI(List<PlayerLeaderboardEntry> leaderboard)
     {
         for(int x = 0; x < leaderboardEntries.Length; x++)
         {
             leaderboardEntries[x].SetActive(x < leaderboard.Count);
-            if (x >= leaderboard.Count)
+            if(x >= leaderboard.Count)
             {
                 continue;
             }
@@ -56,11 +62,11 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    public void SetLeaderboardEntry (int newScore)
+    public void SetLeaderboardEntry(int newScore)
     {
         bool useLegacyMethod = false;
         
-        if (useLegacyMethod)
+        if(useLegacyMethod)
         {
             ExecuteCloudScriptRequest request = new ExecuteCloudScriptRequest
             {
@@ -145,7 +151,7 @@ public class Leaderboard : MonoBehaviour
         }
     }
 
-    private void UpdatePlayerStatistics (int newScore)
+    private void UpdatePlayerStatistics(int newScore)
     {
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
         {
