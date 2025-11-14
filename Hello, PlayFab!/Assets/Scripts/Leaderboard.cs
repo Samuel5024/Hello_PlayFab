@@ -9,11 +9,6 @@ public class Leaderboard : MonoBehaviour
     public GameObject leaderboardCanvas;
     public GameObject[] leaderboardEntries;
 
-    private void Start()
-    {
-        DisplayLeaderboard();
-    }
-
     //create an instance of the script
     public static Leaderboard instance;
     private void Awake()
@@ -27,19 +22,21 @@ public class Leaderboard : MonoBehaviour
     // OnLoggedIn gets caled when we log into our PlayFab account
     public void OnLoggedIn()
     {
-        Debug.Log("OnLoggedIn() called!");
         leaderboardCanvas.SetActive(true);
         DisplayLeaderboard();
     }
-
+    
+    // DisplayLeaderboard() sends the API to get the server & get us the leaderboard
     public void DisplayLeaderboard()
     {
-        GetLeaderboardRequest getLeaderboardRequest = new GetLeaderboardRequest
+        // create the class to hold API info
+        GetLeaderboardRequest getLeaderboardRequest = new GetLeaderboardRequest 
         {
             StatisticName = "FastestTime",
             MaxResultsCount = 10
         };
 
+        // Call the API
         PlayFabClientAPI.GetLeaderboard(getLeaderboardRequest,
             result => UpdateLeaderboardUI(result.Leaderboard),
             error => Debug.Log(error.ErrorMessage)
@@ -52,7 +49,7 @@ public class Leaderboard : MonoBehaviour
     {
         for(int x = 0; x < leaderboardEntries.Length; x++)
         {
-            leaderboardEntries[x].SetActive(x < leaderboard.Count);
+            leaderboardEntries[x].SetActive(x < leaderboard.Count); //start x as less than the number of entries
             if(x >= leaderboard.Count)
             {
                 continue;
@@ -100,27 +97,6 @@ public class Leaderboard : MonoBehaviour
         else
         {
             bool hasFastest = false;
-            /*PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
-                {
-                    Statistics = new List<StatisticUpdate>
-                    {
-                        new StatisticUpdate 
-                        { 
-                            StatisticName = "FastestTime",
-                            Value = newScore 
-                        },
-                    }
-                },
-                result =>
-                {
-                    Debug.Log("User statistics updated");
-                },
-                error =>
-                {
-                    Debug.LogError(error.GenerateErrorReport());
-                }
-            );*/
-
             PlayFabClientAPI.GetPlayerStatistics(new GetPlayerStatisticsRequest(),
                 result =>
                 {
@@ -137,6 +113,7 @@ public class Leaderboard : MonoBehaviour
                             }
                         }
                     }
+                    // If the user does not already have a FastestTime stat (no stats yet)
                     if(!hasFastest)
                     {
                         Debug.Log("initialize");
@@ -155,6 +132,7 @@ public class Leaderboard : MonoBehaviour
     {
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
         {
+            // request.Statistics is a list, so multiple StatisticUpdate objects can be defined if required
             Statistics = new List<StatisticUpdate>
             {
                 new StatisticUpdate {StatisticName = "FastestTime", Value = newScore},
@@ -162,7 +140,7 @@ public class Leaderboard : MonoBehaviour
         },
         result =>
         {
-            Debug.Log("User statistics update");
+            Debug.Log("User statistics updated");
         },
         error =>
         {
