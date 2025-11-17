@@ -7,7 +7,6 @@ using TMPro;
 public class Leaderboard : MonoBehaviour
 {
     public GameObject leaderboardCanvas;
-    public GameObject background;
     public GameObject[] leaderboardEntries;
 
     //create an instance of the script
@@ -18,14 +17,12 @@ public class Leaderboard : MonoBehaviour
         {
             instance = this;
         }
-        background.SetActive(true);
     }
 
     // OnLoggedIn gets caled when we log into our PlayFab account
     public void OnLoggedIn()
     {
         leaderboardCanvas.SetActive(true);
-        background.SetActive(false);
         DisplayLeaderboard();
     }
     
