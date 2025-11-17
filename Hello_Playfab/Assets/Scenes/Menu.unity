@@ -5997,6 +5997,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnLoginButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8189051141379081643, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189051141379081643, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189051141379081643, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189051141379081643, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189051141379081643, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.099975586
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189051141379081643, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.34002686
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189051141379081643, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0018920898
+      objectReference: {fileID: 0}
     - target: {fileID: 8871743118337915364, guid: 1345836fc7770ec43a193389a27c7b2e, type: 3}
       propertyPath: m_Name
       value: PlayFabSystem
